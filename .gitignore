@@ -19,3 +19,4 @@ Thumbs.db
 *_v2.php
 *_backup.php
 /backup/
+.phpunit.result.cache
