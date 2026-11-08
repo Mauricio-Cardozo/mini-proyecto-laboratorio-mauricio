@@ -13,7 +13,9 @@ require_once __DIR__ . '/Report.php';
 
 final class WatermarkDecorator implements Report
 {
-    public function __construct(private Report $report) {}
+    public function __construct(private Report $report)
+    {
+    }
 
     public function generate(): string
     {

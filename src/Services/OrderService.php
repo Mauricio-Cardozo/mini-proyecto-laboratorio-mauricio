@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ============================================================================
  *  SERVICIO DE PEDIDOS
@@ -61,7 +62,7 @@ class OrderService
         $this->notificador->enviar('email', 'paciente@mail.com', "Pedido {$order->id} creado");
 
         return $total;
-    }   
+    }
     /**
      * Obtiene los pedidos y prepara los datos para la vista MVC.
      * El cálculo del total se delega a OrderPricing (Strategy).
@@ -83,8 +84,6 @@ class OrderService
 
         return $pedidos;
     }
-
-    
 }
 
 /*

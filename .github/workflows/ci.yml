@@ -1,0 +1,40 @@
+# Nombre que aparece en la pestana Actions y abajo de cada PR
+name: CI
+
+# CUANDO se ejecuta: en cada push (a cualquier rama) y en cada Pull Request
+on: [push, pull_request]
+
+jobs:
+  # Un "job" es un conjunto de pasos que corren en la misma maquina
+  calidad:
+    # La maquina: un Ubuntu limpio que GitHub crea y destruye en cada ejecucion
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Bajar el codigo del repositorio a la maquina
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      # 2. Instalar PHP 8.2 y Composer (la maquina viene sin nada)
+      - name: Instalar PHP 8.2 y Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+          coverage: none   # no medimos cobertura: arranca mas rapido
+
+      # 3. Revisar que composer.json este bien escrito
+      - name: Validar composer.json
+        run: composer validate
+
+      # 4. ETAPA 1 de la consigna: instalar dependencias desde composer.lock
+      - name: Instalar dependencias
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      # 5. ETAPA 2 de la consigna: lint. Si falla, los pasos siguientes no corren
+      - name: Lint (PHP_CodeSniffer, PSR-12)
+        run: composer lint
+
+      # 6. ETAPA 3 de la consigna: pruebas unitarias
+      - name: Pruebas unitarias (PHPUnit)
+        run: composer test

@@ -3,7 +3,9 @@
 final class PriceCalculator
 {
     // COMPOSICION: La calculadora TIENE una estrategia inyectada
-    public function __construct(private PricingStrategy $strategy) {}
+    public function __construct(private PricingStrategy $strategy)
+    {
+    }
 
     // El cálculo base se delega por completo a la estrategia activa (Polimorfismo)
     public function calculate(float $amount): float
@@ -17,4 +19,3 @@ final class PriceCalculator
         return $this->calculate($amount) * 1.21;
     }
 }
-
