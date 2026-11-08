@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ============================================================================
  * CONTROLADOR DE PEDIDOS
@@ -15,7 +16,8 @@ class OrderController
 {
     public function __construct(
         private OrderService $service = new OrderService()
-    ) {}
+    ) {
+    }
 
     public function create(): void
     {

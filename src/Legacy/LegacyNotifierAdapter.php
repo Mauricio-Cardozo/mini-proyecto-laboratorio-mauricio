@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ============================================================================
  *  ADAPTER: LEGACY NOTIFIER → NOTIFICATION
@@ -23,7 +24,9 @@ require_once __DIR__ . '/LegacyNotifier.php';
 class LegacyNotifierAdapter implements Notification
 {
     /** COMPOSICION: el adapter TIENE el sistema viejo adentro */
-    public function __construct(private LegacyNotifier $legacy) {}
+    public function __construct(private LegacyNotifier $legacy)
+    {
+    }
 
     /**
      * Traduce Notification::send() → LegacyNotifier::sendMessage()

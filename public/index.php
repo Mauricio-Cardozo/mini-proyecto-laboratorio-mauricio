@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ============================================================================
  *  laboratorio-pedidos — PUNTO DE ENTRADA
@@ -34,7 +35,7 @@ spl_autoload_register(function (string $class): void {
 //    Si todavia no se creo el archivo local, se usa la plantilla (valores vacios)
 //    para que la demo arranque igual sin MySQL.
 $configLocal = __DIR__ . '/../config/database.php';
-$config = require (is_file($configLocal) ? $configLocal : __DIR__ . '/../config/database.example.php');
+$config = require(is_file($configLocal) ? $configLocal : __DIR__ . '/../config/database.example.php');
 
 $accion = $_GET['accion'] ?? 'crear';
 

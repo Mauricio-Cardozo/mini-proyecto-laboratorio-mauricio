@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuracion de PHPUnit para laboratorio-pedidos -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         failOnWarning="true"
+         failOnRisky="true">
+    <!-- bootstrap: antes de cualquier prueba carga el autoload de Composer,
+         asi las clases de src/ se encuentran solas -->
+    <!-- colors: verde si pasa, rojo si falla -->
+    <!-- failOnWarning / failOnRisky: una prueba sospechosa tambien hace fallar
+         la ejecucion, para que no pase desapercibida en el CI -->
+    <testsuites>
+        <!-- Un "testsuite" es un grupo de pruebas. Este toma todos los
+             archivos *Test.php de la carpeta tests/Unit -->
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

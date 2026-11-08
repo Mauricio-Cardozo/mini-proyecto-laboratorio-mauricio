@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- Reglas de estilo del proyecto (las lee phpcs y phpcbf) -->
+<ruleset name="laboratorio-pedidos">
+    <description>Estandar PSR-12 para laboratorio-pedidos</description>
+
+    <!-- Carpetas que se revisan. views/ queda afuera porque mezcla HTML y PHP -->
+    <file>src</file>
+    <file>public</file>
+    <file>tests</file>
+
+    <!-- Salida con colores; "s" muestra el codigo de cada regla y "p" el progreso -->
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <!-- Las advertencias se muestran pero NO hacen fallar el CI; los errores si -->
+    <config name="ignore_warnings_on_exit" value="1"/>
+
+    <!-- Usamos PSR-12 completo... -->
+    <rule ref="PSR12">
+        <!-- ...menos la regla que exige namespace: agregar namespaces a todas
+             las clases es otro refactor que no corresponde a este TP -->
+        <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+    </rule>
+</ruleset>

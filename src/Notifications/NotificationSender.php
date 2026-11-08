@@ -8,7 +8,7 @@ final class NotificationSender
     {
         // La fábrica se encarga de darme el objeto correcto
         $canal = NotificationFactory::make($tipo);
-        
+
         // Polimorfismo: no me importa qué canal sea, sé que tiene el método send()
         $canal->send($mensaje, $destino);
     }
